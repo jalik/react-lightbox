@@ -9,7 +9,7 @@
     "lint-fix": "npx eslint --fix --ext js,jsx .",
     "prepare": "npx gulp prepare",
     "prepublishOnly": "npm test",
-    "test": "npx jest",
+    "test": "npx jest --passWithNoTests",
     "watch": "npx gulp watch"
   },
   "keywords": [
