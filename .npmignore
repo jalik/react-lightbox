@@ -1,0 +1,19 @@
+# Project settings
+/.idea/
+*.iml
+
+# Tools settings
+.eslintignore
+.eslintrc.json
+.gitignore
+babel.config.js
+gulpfile.js
+
+# Dependencies
+/node_modules/
+
+# Sources
+/src/
+
+# Tests
+/test/
