@@ -53,28 +53,32 @@ function Thumbnails() {
           transitionDuration: '0.3s',
         }}
       >
-        {items.map((item, index) => (
-          <img
-            key={item.src}
-            src={item.src}
-            alt={item.alt}
-            onClick={() => {
-              dispatch({
-                type: ACTION_GO_TO,
-                data: { index, playing: false },
-              });
-            }}
-            style={{
-              backgroundColor: '#FFFFFF',
-              width: 'auto',
-              height: '100%',
-              marginRight: index < items.length - 1 ? margin : 0,
-              opacity: activeIndex === index ? 1 : 0.3,
-              transitionProperty: 'opacity',
-              transitionDuration: '0.3s',
-            }}
-          />
-        ))}
+        {items.map((item, index) => {
+          const goto = (event) => {
+            event.preventDefault();
+            dispatch({
+              type: ACTION_GO_TO,
+              data: { index, playing: false },
+            });
+          };
+          return (
+            <img
+              key={item.src}
+              src={item.src}
+              alt={item.alt}
+              onClick={goto}
+              style={{
+                backgroundColor: '#FFFFFF',
+                width: 'auto',
+                height: '100%',
+                marginRight: index < items.length - 1 ? margin : 0,
+                opacity: activeIndex === index ? 1 : 0.3,
+                transitionProperty: 'opacity',
+                transitionDuration: '0.3s',
+              }}
+            />
+          );
+        })}
       </div>
     </div>
   );
