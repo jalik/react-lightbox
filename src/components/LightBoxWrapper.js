@@ -35,9 +35,8 @@ function LightBoxWrapper({ children, items }) {
   useEventListener('click', (event) => {
     // Check if clicked element is an image declared in light box wrapper.
     if (event.target.nodeName === 'IMG') {
-      const activeIndex = items
-        ? items.map((item) => item.src).indexOf(event.target.src)
-        : 0;
+      const activeIndex = items.map((item) => item.src)
+        .indexOf(decodeURIComponent(event.target.src));
 
       if (activeIndex !== -1) {
         dispatch({
