@@ -11,8 +11,5 @@ babel.config.*
 # Dependencies
 /node_modules/
 
-# Sources
-/src/
-
 # Tests
 /test/
