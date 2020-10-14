@@ -6,8 +6,7 @@
 .eslintignore
 .eslintrc.json
 .gitignore
-babel.config.js
-gulpfile.js
+babel.config.*
 
 # Dependencies
 /node_modules/
