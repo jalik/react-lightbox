@@ -23,20 +23,27 @@
  *
  */
 
-import PropTypes from 'prop-types';
-import React from 'react';
+import {
+  arrayOf,
+  node,
+  shape,
+  string,
+} from 'prop-types';
+import React, { useMemo } from 'react';
 import { ACTION_OPEN } from '../reducer';
 import useEventListener from '../useEventListener';
 import useLightBoxContext from '../useLightBoxContext';
 
 function LightBoxWrapper({ children, items }) {
   const { dispatch } = useLightBoxContext();
+  const memoizedPaths = useMemo(() => (
+    items.map((item) => (decodeURIComponent(item.src)))
+  ), [items]);
 
   useEventListener('click', (event) => {
     // Check if clicked element is an image declared in light box wrapper.
     if (event.target.nodeName === 'IMG') {
-      const activeIndex = items.map((item) => item.src)
-        .indexOf(decodeURIComponent(event.target.src));
+      const activeIndex = memoizedPaths.indexOf(decodeURIComponent(event.target.src));
 
       if (activeIndex !== -1) {
         dispatch({
@@ -67,7 +74,16 @@ function LightBoxWrapper({ children, items }) {
 }
 
 LightBoxWrapper.propTypes = {
-  children: PropTypes.node,
+  children: node,
+  items: arrayOf(shape({
+    alt: string,
+    src: string.isRequired,
+  })),
+};
+
+LightBoxWrapper.defaultProps = {
+  children: null,
+  items: [],
 };
 
 export default LightBoxWrapper;
