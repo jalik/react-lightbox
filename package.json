@@ -1,6 +1,6 @@
 {
   "name": "@jalik/react-lightbox",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Light box component for React",
   "main": "dist/index.js",
   "esnext": "src/index.js",
