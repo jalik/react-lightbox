@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.0.5
+- Upgraded dependencies
+
 ## v1.0.4
 - Fixed opening of images with encoded URL
 - Upgraded dependencies
