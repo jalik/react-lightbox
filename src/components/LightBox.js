@@ -1,6 +1,6 @@
 /*
  * The MIT License (MIT)
- * Copyright (c) 2020 Karl STEIN
+ * Copyright (c) 2021 Karl STEIN
  */
 
 import React, {
@@ -43,7 +43,7 @@ function LightBox() {
   }, [dispatch, duration, playing, show]);
 
   useEventListener('keydown', useCallback((event) => {
-    if (event.defaultPrevented) {
+    if (event.defaultPrevented || !show) {
       return;
     }
     switch (event.key) {
@@ -91,7 +91,7 @@ function LightBox() {
         break;
       default:
     }
-  }, [dispatch]));
+  }, [dispatch, show]));
 
   if (!show) {
     return null;
