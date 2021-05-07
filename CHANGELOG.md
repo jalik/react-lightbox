@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.6
+- Fixed keydown event being caught while lightbox hidden
+- Upgraded dependencies
+
 ## v1.0.5
 - Upgraded dependencies
 
