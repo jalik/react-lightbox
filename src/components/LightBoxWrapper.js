@@ -1,6 +1,6 @@
 /*
  * The MIT License (MIT)
- * Copyright (c) 2020 Karl STEIN
+ * Copyright (c) 2021 Karl STEIN
  */
 
 import {
@@ -15,14 +15,14 @@ import useEventListener from '../useEventListener';
 import useLightBoxContext from '../useLightBoxContext';
 
 function LightBoxWrapper({ children, items }) {
-  const { dispatch } = useLightBoxContext();
+  const { dispatch, show } = useLightBoxContext();
   const memoizedPaths = useMemo(() => (
     items.map((item) => (decodeURIComponent(item.src)))
   ), [items]);
 
   useEventListener('click', (event) => {
     // Check if clicked element is an image declared in light box wrapper.
-    if (event.target.nodeName === 'IMG') {
+    if (!show && event.target.nodeName === 'IMG') {
       const activeIndex = memoizedPaths.indexOf(decodeURIComponent(event.target.src));
 
       if (activeIndex !== -1) {

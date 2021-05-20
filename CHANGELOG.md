@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.9
+
+- Fixed closing of lightbox
+- Upgraded dependencies
+
 ## v1.0.8
 
 - Added support for react 17.x
