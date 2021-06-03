@@ -46,6 +46,7 @@ function LightBoxWrapper({ children, items }) {
       <img
         alt={alt}
         src={src}
+        // eslint-disable-next-line react/jsx-props-no-spreading
         {...imgProps}
       />
     );

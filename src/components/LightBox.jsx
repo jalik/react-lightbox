@@ -29,6 +29,16 @@ function LightBox() {
     show,
   } = useLightBoxContext();
 
+  const handleClickImage = useCallback(() => {
+    dispatch({ type: ACTION_CLOSE });
+  }, [dispatch]);
+
+  const handleKeyPressImage = useCallback((event) => {
+    if ([' ', 'Enter'].indexOf(event.key) !== -1) {
+      dispatch({ type: ACTION_CLOSE });
+    }
+  }, [dispatch]);
+
   // Changes image automatically.
   useEffect(() => {
     let timer;
@@ -115,6 +125,9 @@ function LightBox() {
       }}
     >
       <div
+        onClick={handleClickImage}
+        onKeyPress={handleKeyPressImage}
+        role="button"
         style={{
           flexGrow: 1,
           display: 'flex',
@@ -122,11 +135,11 @@ function LightBox() {
           alignItems: 'center',
           overflow: 'auto',
         }}
+        tabIndex={0}
       >
         <img
           alt={items[activeIndex].alt}
           src={items[activeIndex].src}
-          onClick={() => dispatch({ type: ACTION_CLOSE })}
           style={{ maxHeight: '100%', width: 'auto', maxWidth: '100%' }}
         />
       </div>

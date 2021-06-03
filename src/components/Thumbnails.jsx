@@ -1,9 +1,9 @@
 /*
  * The MIT License (MIT)
- * Copyright (c) 2020 Karl STEIN
+ * Copyright (c) 2021 Karl STEIN
  */
 
-import React from 'react';
+import React, { useCallback } from 'react';
 import { ACTION_GO_TO } from '../reducer';
 import useLightBoxContext from '../useLightBoxContext';
 
@@ -11,6 +11,29 @@ function Thumbnails() {
   const margin = 5;
   const size = 100;
   const { activeIndex, dispatch, items } = useLightBoxContext();
+
+  const handleClickImage = useCallback((index) => (
+    (event) => {
+      event.preventDefault();
+      dispatch({
+        type: ACTION_GO_TO,
+        data: { index, playing: false },
+      });
+    }
+  ), [dispatch]);
+
+  const handleKeyPressImage = useCallback((index) => (
+    (event) => {
+      if ([' ', 'Enter'].indexOf(event.key) !== -1) {
+        event.preventDefault();
+        dispatch({
+          type: ACTION_GO_TO,
+          data: { index, playing: false },
+        });
+      }
+    }
+  ), [dispatch]);
+
   return (
     <div
       style={{
@@ -33,20 +56,17 @@ function Thumbnails() {
           transitionDuration: '0.3s',
         }}
       >
-        {items.map((item, index) => {
-          const goto = (event) => {
-            event.preventDefault();
-            dispatch({
-              type: ACTION_GO_TO,
-              data: { index, playing: false },
-            });
-          };
-          return (
+        {items.map((item, index) => (
+          <div
+            key={item.src}
+            onClick={handleClickImage(index)}
+            onKeyPress={handleKeyPressImage(index)}
+            role="button"
+            tabIndex={0}
+          >
             <img
-              key={item.src}
-              src={item.src}
               alt={item.alt}
-              onClick={goto}
+              src={item.src}
               style={{
                 backgroundColor: '#FFFFFF',
                 width: 'auto',
@@ -57,8 +77,8 @@ function Thumbnails() {
                 transitionDuration: '0.3s',
               }}
             />
-          );
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );

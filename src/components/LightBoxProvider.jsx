@@ -1,6 +1,6 @@
 /*
  * The MIT License (MIT)
- * Copyright (c) 2020 Karl STEIN
+ * Copyright (c) 2021 Karl STEIN
  */
 
 import PropTypes from 'prop-types';
@@ -9,14 +9,14 @@ import reducer from '../reducer';
 import { LightBoxContext } from '../useLightBoxContext';
 import LightBox from './LightBox';
 
-function LightBoxProvider(
-  {
+function LightBoxProvider(props) {
+  const {
     children,
     duration,
     loop,
     playing,
-  },
-) {
+  } = props;
+
   const [state, dispatch] = useReducer(reducer, {
     activeIndex: 0,
     duration: Math.max(0, duration),
