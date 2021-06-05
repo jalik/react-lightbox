@@ -33,6 +33,10 @@
     "url": "https://github.com/jalik/react-lightbox/issues"
   },
   "license": "MIT",
+  "files": [
+    "/dist",
+    "/src"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.14.3",
     "@babel/core": "^7.14.3",
