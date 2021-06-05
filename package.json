@@ -3,6 +3,7 @@
   "version": "1.0.9",
   "description": "Light box component for React",
   "main": "dist/index.js",
+  "module": "src/index.js",
   "esnext": "src/index.js",
   "sideEffects": false,
   "scripts": {
