@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.11
+
+- Fixed ESM build
+
 ## v1.0.10
 
 - Upgraded dependencies
