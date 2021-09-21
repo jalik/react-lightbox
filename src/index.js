@@ -1,10 +1,18 @@
 /*
  * The MIT License (MIT)
- * Copyright (c) 2020 Karl STEIN
+ * Copyright (c) 2021 Karl STEIN
  */
 
-export LightBox from './components/LightBox';
-export LightBoxProvider from './components/LightBoxProvider';
-export LightBoxWrapper from './components/LightBoxWrapper';
-export Thumbnails from './components/Thumbnails';
-export useLightBoxContext from './useLightBoxContext';
+import LightBox from './components/LightBox';
+import LightBoxProvider from './components/LightBoxProvider';
+import LightBoxWrapper from './components/LightBoxWrapper';
+import Thumbnails from './components/Thumbnails';
+import useLightBoxContext from './useLightBoxContext';
+
+export {
+  LightBox,
+  LightBoxWrapper,
+  Thumbnails,
+  LightBoxProvider,
+  useLightBoxContext,
+};
