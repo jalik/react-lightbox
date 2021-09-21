@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.12
+
+- Fixed display of thumbnails
+
 ## v1.0.11
 
 - Fixed ESM build
