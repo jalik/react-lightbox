@@ -49,6 +49,7 @@ function Thumbnails() {
     >
       <div
         style={{
+          display: 'flex',
           height: '100%',
           position: 'relative',
           left: -size * activeIndex,
@@ -63,6 +64,10 @@ function Thumbnails() {
             onKeyPress={handleKeyPressImage(index)}
             role="button"
             tabIndex={0}
+            style={{
+              height: '100%',
+              // marginRight: index < items.length - 1 ? margin : 0,
+            }}
           >
             <img
               alt={item.alt}
@@ -71,7 +76,6 @@ function Thumbnails() {
                 backgroundColor: '#FFFFFF',
                 width: 'auto',
                 height: '100%',
-                marginRight: index < items.length - 1 ? margin : 0,
                 opacity: activeIndex === index ? 1 : 0.3,
                 transitionProperty: 'opacity',
                 transitionDuration: '0.3s',
